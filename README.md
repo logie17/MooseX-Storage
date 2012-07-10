@@ -1,0 +1,4 @@
+MooseX-Storage
+==============
+
+MooseX::Storage
