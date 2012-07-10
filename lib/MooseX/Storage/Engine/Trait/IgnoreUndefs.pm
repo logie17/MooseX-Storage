@@ -10,6 +10,13 @@ around 'collapse_attribute' => sub {
     return;
 };
 
+around 'expand_attribute' => sub {
+    my ($orig, $self, $attr, $data, $options) = @_;
+    my $value = $self->expand_attribute_value($attr, $data->{$attr->name}, $options);
+    return if !defined($value);
+    $self->storage->{$attr->name} = defined $value ? $value : return;
+};
+
 1;
 
 __END__

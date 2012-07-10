@@ -3,7 +3,8 @@ $|++;
 use strict;
 use warnings;
 
-use Test::More tests => 3;
+use Test::More tests => 5;
+use Test::Exception;
 use Storable;
 
 BEGIN {
@@ -79,6 +80,15 @@ BEGIN {
           'string' => undef
         },
         '... got the data struct we expected'
+    );
+
+    my $foo2;
+    lives_ok { $foo2 = Foo->unpack($foo->pack) } 'unpacks into a valid Moose obj';
+
+    is_deeply(
+        $foo2->pack,
+        $foo->pack,
+        '... if all goes well both object packs match'
     );
 }
 
