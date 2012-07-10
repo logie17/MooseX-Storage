@@ -3,6 +3,7 @@ package MooseX::Storage;
 use Moose qw(confess);
 
 use MooseX::Storage::Meta::Attribute::DoNotSerialize;
+use MooseX::Storage::Meta::Attribute::Serialize;
 use String::RewritePrefix ();
 
 our $VERSION   = '0.31';
